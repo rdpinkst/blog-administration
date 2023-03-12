@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import Navbar from './components/Navbar'
 import Signin from './components/Signin'
 import CreatePost from './components/CreatePost'
+import Homepage from './components/Homepage'
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <div className="App flex flex-col min-h-screen">
       <Navbar />
       {/* <Signin /> */}
-      <CreatePost />
+      {/* <CreatePost /> */}
+      <Homepage />
     </div>
   )
 }
