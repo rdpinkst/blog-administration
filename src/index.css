@@ -13,3 +13,7 @@ html{
   font-family: 'Mukta', sans-serif;
   font-family: 'Outfit', sans-serif;
 }
+.lg-svg{
+  height: auto;
+  width: 50%;
+}

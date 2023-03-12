@@ -6,11 +6,8 @@ function Homepage() {
     return (
         <div className="bg-shell flex grow justify-center items-center">
             <div className="flex flex-col h-44">
-                <div className="w-full h-1/2">
-                   <UploadFileIcon className="h-full w-full" /> 
-                </div>
-                
-                <h2>CREATE YOUR FIRST POST</h2>
+               <UploadFileIcon className="flex-no-shrink fill-current" viewBox="0 0 24 24" heigth="auto" width="50%" /> 
+               <h2>CREATE YOUR FIRST POST</h2>
             </div>
         </div>
     )
