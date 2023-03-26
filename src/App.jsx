@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App flex flex-col min-h-screen">
+    <div className="App flex flex-col min-h-screen overflow-scroll">
       <BrowserRouter>
       <Navbar />
         <Routes>

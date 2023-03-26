@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 body{
-  height: 100vh;
+  min-height: 100vh;
 }
 html{
-  height: 100vh;
+  min-height: 100vh;
 }
 #root{
   min-height: 100vh;
