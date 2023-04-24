@@ -2,12 +2,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 
-function PostCard() {
+function PostCard({postData}) {
     return (
         <div className='container p-4 flex flex-col justify-between bg-shell w-80 h-80 border-2 border-eggplant rounded'>
           <div>
-           <h2 className='text-center font-bold text-xl'>Post Title</h2>
-           <p className='mt-2 mb-2'>This is the first paragraph of the post.</p> 
+           <h2 className='text-center font-bold text-xl'>{postData.title}</h2>
+           <p className='mt-2 mb-2'>{postData.postBody}</p> 
           </div>
           
           <div className='flex justify-end'>
