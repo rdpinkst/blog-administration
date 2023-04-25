@@ -11,7 +11,7 @@ function PostCard({postData}) {
           </div>
           
           <div className='flex justify-end'>
-            <Link to='/new-post'><EditIcon className='mr-4' /></Link>
+            <Link to='/new-post' state={{postData: postData}}><EditIcon className='mr-4' /></Link>
             <DeleteIcon />
           </div>
           
