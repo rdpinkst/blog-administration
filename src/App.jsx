@@ -8,13 +8,14 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
 function App() {
+
   return (
     <div className="App flex flex-col min-h-screen overflow-scroll">
       <BrowserRouter>
       <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
           <Route path="/signin" element={<Signin />} />
+          <Route path="/home" element={<Homepage />} />
           <Route path='/new-post' element={<CreatePost />} />
         </Routes>
       </BrowserRouter>

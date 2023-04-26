@@ -3,6 +3,8 @@ import { useState } from "react";
 
 function Signin() {
     const [signIn, setSignIn] = useState(true);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     return (
         <div className="container mx-auto px-4 flex justify-center bg-shell min-w-full grow">
@@ -11,12 +13,14 @@ function Signin() {
                 <div className="pb-4">
                     <label htmlFor="email"></label>
                     <input className="form-input px-4 py-3 rounded-full w-full" 
-                    type="text" name="email" id="email" placeholder="Email"/>  
+                    type="text" name="email" id="email" placeholder="Email"
+                    value={email} onChange={(e) => setEmail(e.target.value)}/>  
                 </div>
                 <div className="pb-4">
                     <label htmlFor="password"></label>
                     <input className="form-input px-4 py-3 rounded-full w-full" 
-                    type="password" name="password" id="password" placeholder="Password"/> 
+                    type="password" name="password" id="password" placeholder="Password"
+                    value={password} onChange={(e) => setPassword(e.target.value)}/> 
                 </div>
 
                 <button className="font-bold py-2 px-4 rounded bg-grape 
