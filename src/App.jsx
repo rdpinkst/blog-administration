@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import Navbar from './components/Navbar'
-import Signin from './components/Signin'
-import CreatePost from './components/CreatePost'
-import Homepage from './components/Homepage'
+
+import { Navbar, Signin, CreatePost, Homepage } from './components';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
@@ -15,7 +13,7 @@ function App() {
       <Navbar />
         <Routes>
           <Route path="/signin" element={<Signin />} />
-          <Route path="/home" element={<Homepage />} />
+          <Route path="/" element={<Homepage />} />
           <Route path='/new-post' element={<CreatePost />} />
         </Routes>
       </BrowserRouter>
