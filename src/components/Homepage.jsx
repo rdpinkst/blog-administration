@@ -1,91 +1,48 @@
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import { Link } from 'react-router-dom';
 import PostCard from './PostCard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+const API_GET = "https://holy-water-2894.fly.dev/api/v1/posts"
 
 function Homepage() {
-    const [noPosts, setNoPosts] = useState(false);
+    const [postData, setPostData] = useState([]);
+    const [posts, setPosts] = useState(false);
+    let postLength = postData.length;
+
+    useEffect(() => {
+        async function postDataGet(url) {
+            const res = await fetch(url, {
+                method: "GET",
+                mode: "cors"
+            })
+            const obj = await res.json();
+            setPostData(prevState => [...obj] );
+            setPosts(true);
+        }
+        postDataGet(API_GET);
+    }, [])
+    
   
     
     return (
         <div className="bg-shell flex grow justify-center overflow-scroll">
-            { noPosts &&
+            { !posts ?
             <div className="flex flex-col h-44 self-center">
-               
-                 <Link to="/new-post">
+                 <Link to="/new-post" state={{postData: null }}>
                    <UploadFileIcon className="flex-no-shrink fill-current" viewBox="0 0 24 24" heigth="auto" width="50%" /> 
                    <h2>CREATE YOUR FIRST POST</h2>
                  </Link>  
-            </div>
-            }
-            { !noPosts &&
+            </div> : null
+            }{ posts ?
              <div className='grid grid-cols-4 gap-6 mt-14 mb-14'>
                 {postData.map(data => {
-                    return <PostCard key={data.id} postData= {data} />
+                    return <PostCard key={data._id} postData= {data} />
                 })} 
-              </div>
+              </div> : null
             }
         </div>
     )
 }
-
-const postData = [
-    {
-        id: 1,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-    {
-        id: 2,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-    {
-        id: 3,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-    {
-        id: 4,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-    {
-        id: 5,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-    {
-        id: 6,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-    {
-        id: 7,
-        user: "some user object",
-        title: "Post Title",
-        postBody: "This is the first sentence of the post.",
-        publish: "True",
-        timestamps: Date.now(),
-    },
-]
 
 export default Homepage;

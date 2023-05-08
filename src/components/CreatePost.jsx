@@ -4,10 +4,11 @@ import {useLocation} from 'react-router-dom';
 function CreatePost() {
     const location = useLocation();
     const {postData} = location.state;
+    
 
-    const [title, setTitle] = useState(() => postData.title ? postData.title : "");
-    const [postBody, setPostBody] = useState(() => postData.postBody ? postData.postBody: "");
-    const [check, setCheck] = useState(() => postData.publish ? true : false);
+    const [title, setTitle] = useState(() => postData ? postData.title : "");
+    const [postBody, setPostBody] = useState(() => postData ? postData.postBody: "");
+    const [check, setCheck] = useState(() => postData ? true : false);
 
     const handleChange = () => {
         setCheck(!check);
