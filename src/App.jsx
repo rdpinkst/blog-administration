@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 
 import { Navbar, Signin, CreatePost, Homepage } from './components';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
-function App() {
 
+function App() {
+  
   return (
     <div className="App flex flex-col min-h-screen overflow-scroll">
       <BrowserRouter>
