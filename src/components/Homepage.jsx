@@ -5,23 +5,22 @@ import { useEffect, useState } from 'react';
 
 const API_GET = "https://holy-water-2894.fly.dev/api/v1/posts"
 
-function Homepage() {
+function Homepage({token}) {
     const [postData, setPostData] = useState([]);
     let mounted = true;
     
-
     useEffect(() => {
       console.log("render")
         if(postData.length) {
             return;
         }
-        if(mounted) {
+        if(mounted && token) {
            postDataGet(API_GET); 
         }
 
         return () => mounted = false;
         
-    }, [postData])
+    }, [postData, token])
     
     async function postDataGet(url) {
             const res = await fetch(url, {

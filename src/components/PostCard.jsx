@@ -3,6 +3,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 
 function PostCard({postData}) {
+  
     return (
         <div className='container p-4 flex flex-col justify-between bg-shell w-80 h-80 border-2 border-eggplant rounded'>
           <div>
