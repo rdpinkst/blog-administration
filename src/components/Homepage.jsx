@@ -10,7 +10,6 @@ function Homepage({token}) {
     let mounted = true;
     
     useEffect(() => {
-      console.log("render")
         if(postData.length) {
             return;
         }
@@ -28,9 +27,7 @@ function Homepage({token}) {
                 mode: "cors"
             })
             const obj = await res.json();
-            setPostData(prevState => [...obj]);
-            // setPosts(true);   
-               
+            setPostData(prevState => [...obj]);       
         }
   
     

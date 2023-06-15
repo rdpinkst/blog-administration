@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
 
-function Navbar() {
-    const [signedIn, setSignedIn] = useState(false);
+function Navbar({signedIn}) {
 
     return (
       <header className="flex justify-between pt-7 pb-7 pr-14 pl-14 border-b bg-eggplant text-white">

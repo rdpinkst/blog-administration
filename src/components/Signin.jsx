@@ -1,10 +1,34 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
+const API_USER_SIGNIN = "https://holy-water-2894.fly.dev/api/v1/user/signin"
 
-function Signin() {
-    const [signIn, setSignIn] = useState(true);
+function Signin({setToken, setSignedIn}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userID, setUserID] = useState('');
+
+    async function signUserIn(e) {
+        e.preventDefault();
+        const res = await fetch(API_USER_SIGNIN,{
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })},)
+            const obj = await res.json();
+            if(obj.id) {
+              setUserID(obj.id);
+              setToken(obj.token);
+              setSignedIn(true);
+              localStorage.setItem("token", obj.token); 
+            }
+            
+    }
 
     return (
         <div className="container mx-auto px-4 flex justify-center bg-shell min-w-full grow">
@@ -24,8 +48,10 @@ function Signin() {
                 </div>
 
                 <button className="font-bold py-2 px-4 rounded bg-grape 
-                text-white w-full font-semibold text-lg">{signIn ? "Log in" : "Sign up"}</button>
+                text-white w-full font-semibold text-lg" 
+                onClick={signUserIn}>"Log in"</button>
             </form>
+            {userID && <Navigate to="/" replace/>}
         </div>
         
     )
