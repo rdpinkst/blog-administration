@@ -14,8 +14,6 @@ function App() {
     else false;
   });
 
-  
-  
   return (
     <div className="App flex flex-col min-h-screen overflow-scroll">
       <BrowserRouter>
