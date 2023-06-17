@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import {useLocation, Navigate} from 'react-router-dom';
 
-const API_POST = "https://holy-water-2894.fly.dev/api/v1/posts"
+const API_POST = "https://holy-water-2894.fly.dev/api/v1/posts";
+
 
 function CreatePost() {
     const location = useLocation();
@@ -10,7 +11,8 @@ function CreatePost() {
 
     const [title, setTitle] = useState(() => postData ? postData.title : "");
     const [postBody, setPostBody] = useState(() => postData ? postData.postBody: "");
-    const [check, setCheck] = useState(() => postData ? true : false);
+    const [check, setCheck] = useState(() => postData ? postData.publish === "true" ? true : false : false);
+    const [update, setUpdate] = useState(() => postData ? true : false);
     const [redirect, setRedirect] = useState(false);
 
     const handleChange = () => {
@@ -20,9 +22,12 @@ function CreatePost() {
     async function submitPost(e) {
         e.preventDefault();
         let jwt = localStorage.getItem("token");
+        let methodType = update ? "PUT" : "POST";
+        let api_address = update ? API_POST + "/" + postData._id : API_POST;
+        
 
-        const res = await fetch(API_POST, {
-            method: "POST",
+        const res = await fetch(api_address, {
+            method: methodType,
             mode: "cors",
             headers: {
               "Content-type": "application/json",
@@ -67,7 +72,7 @@ function CreatePost() {
                 </div>
 
                 <button className="font-bold py-2 px-4 rounded bg-grape 
-                text-white w-full font-semibold text-lg" onClick={submitPost}>Create</button>
+                text-white w-full font-semibold text-lg" onClick={submitPost}>{postData ? "Update" : "Create"}</button>
             </form>
             {redirect && <Navigate to="/" replace/>}
         </div>

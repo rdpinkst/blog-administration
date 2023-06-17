@@ -42,7 +42,7 @@ function Homepage({token}) {
             </div> :
              <div className='grid xl:grid-cols-4 lg:grid-cols-3 gap-6 mt-14 mb-14 md:grid-cols-2 sm:grid-cols-1'>
                 {postData.map(data => {
-                    return <PostCard key={data._id} postData= {data} />
+                    return <PostCard key={data._id} postData= {data} setPostData={setPostData}/>
                 })} 
               </div>
             }
