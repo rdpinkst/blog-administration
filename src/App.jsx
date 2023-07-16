@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
       <Navbar signedIn={signedIn} />
         <Routes>
-          <Route path="/signin" element={<Signin setToken={setUserToken} setSignedIn={setSignedIn} />} />
+          <Route path="/signin" element={<Signin signedIn = {signedIn} setToken={setUserToken} setSignedIn={setSignedIn} />} />
           <Route path="/" element={userToken ? <Homepage token={userToken} /> : <Navigate to="/signin" replace />} />
           <Route path='/new-post' element={<CreatePost />} />
         </Routes>

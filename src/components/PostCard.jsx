@@ -29,7 +29,7 @@ function PostCard({postData, setPostData}) {
         <div className='container p-4 flex flex-col justify-between bg-shell w-80 h-80 border-2 border-eggplant rounded'>
           <div>
            <h2 className='text-center font-bold text-xl'>{postData.title}</h2>
-           <p className='mt-2 mb-2'>{postData.postBody}</p> 
+           <p className='mt-2 mb-2'>{postData.postBody.split(" ").slice(0,25).join(" ") + "..."}</p> 
           </div>
           
           <div className='flex justify-end'>

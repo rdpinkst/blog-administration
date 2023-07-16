@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const API_USER_SIGNIN = "https://holy-water-2894.fly.dev/api/v1/user/signin"
 
-function Signin({setToken, setSignedIn}) {
+function Signin({signedIn, setToken, setSignedIn}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userID, setUserID] = useState('');
@@ -33,7 +33,7 @@ function Signin({setToken, setSignedIn}) {
     return (
         <div className="container mx-auto px-4 flex justify-center bg-shell min-w-full grow">
             <form action="#" className= "w-1/4 rounded overflow-hidden shadow-lg p-9 mt-28 space-y-8 h-96 bg-sand">
-                <h2 className="text-5xl text-center font-bold text-grape">{signIn ? "Sign In" : "Sign Up"}</h2>
+                <h2 className="text-5xl text-center font-bold text-grape">{signedIn ? "Sign In" : "Sign Up"}</h2>
                 <div className="pb-4">
                     <label htmlFor="email"></label>
                     <input className="form-input px-4 py-3 rounded-full w-full" 
@@ -49,7 +49,7 @@ function Signin({setToken, setSignedIn}) {
 
                 <button className="font-bold py-2 px-4 rounded bg-grape 
                 text-white w-full font-semibold text-lg" 
-                onClick={signUserIn}>"Log in"</button>
+                onClick={signUserIn}>Log in</button>
             </form>
             {userID && <Navigate to="/" replace/>}
         </div>
