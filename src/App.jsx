@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import jwt_decode from 'jwt-decode'
 import { Navbar, Signin, CreatePost, Homepage } from './components';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 
@@ -7,7 +7,13 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 
 function App() {
   const [userToken, setUserToken] = useState(() => {
-    return localStorage.getItem('token')
+    let token = localStorage.getItem('token');
+    const decodedJWT = jwt_decode(token)
+    if(decodedJWT.exp * 1000 < Date.now()) {
+      localStorage.removeItem('token');
+      return '';
+    };
+    return token;
   });
   const [signedIn, setSignedIn] = useState(() => {
     if(userToken) return true;
